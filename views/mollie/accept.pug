@@ -1,0 +1,32 @@
+extends ../dashboard.pug
+
+block sidemenu
+		ul.nav.nav-pills.flex-column
+						li.nav-item
+							a.nav-link.active(href='/mollie')
+								| refund 
+								span.sr-only (current)
+
+block content
+	h1 controleer de gegevens:
+	if errors
+		div.alert.alert-danger
+			each msg in errors
+				p= msg.message		
+	if done
+		div.alert.alert-succes
+			p Betaling is teruggestort. 	
+	p naam:
+	if details
+		p= details.consumerName
+	p bankrekeningnummer:
+	if details
+		p= details.consumerAccount
+	form(action='/mollie/refund_send', method='post')
+		p payment ID:
+		input(value=paymentId, type='text', name='paymentId', readonly)
+		br
+		p bedrag:
+		input(value= paymentAmount, type='text' name='paymentAmount')
+		br
+		button.btn.btn-lg.btn-success(type='submit') verstuur

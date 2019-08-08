@@ -1,0 +1,22 @@
+extends ../dashboard.pug
+
+block sidemenu
+	ul.nav.nav-pills.flex-column
+		li.nav-item
+			a.nav-link.active(href='/mollie')
+				| Refund
+				span.sr-only (current)
+
+block content
+	h1 Mollie Refund app
+	if errors
+		div.alert.alert-danger
+			each msg in errors
+				p= msg.message	
+	form(action='/mollie/refundCheck', method='post')
+		input(placeholder='payment ID', type='text', name='paymentId')
+		br
+		input(placeholder='terug te storten bedrag*', type='text' name='paymentAmount')
+		br
+		button.btn.btn-lg.btn-success(type='submit') verstuur
+		p *Als geen bedrag ingevuld wordt, zal het volledige bedrag teruggestort worden

@@ -1,0 +1,48 @@
+extends ../dashboard.pug
+block menu
+	ul.navbar-nav.mr-auto
+		li.nav-item
+			a.nav-link(href='/dashboard') Dashboard 
+		//- if user.role == 'admin'
+			li.nav-item
+				a.nav-link(href='/instellingen') Instellingen
+		li.nav-item.active
+			a.nav-link(href='/users') Profiel
+		li.nav-item
+			a.nav-link(href='/users/logout') Uitloggen
+
+block sidemenu
+	ul.nav.nav-pills.flex-column
+					li.nav-item
+						a.nav-link(href='/users')
+							| Huidige gebruiker
+					if user.role == 'admin'
+						li.nav-item
+							a.nav-link(href='/users/register')
+								| Nieuwe gebruiker 
+					li.nav-item
+						a.nav-link.active(href='/users/reset')
+							| Wachtwoord wijzigen
+block content
+		h1 Wachtwoordwijzigen
+		if errors
+			div.alert-danger.alert
+				each msg in errors
+					p= msg.msg
+		if done
+			div.alert-succes.alert
+				p gebruiker is aangepast
+		form(action='/users/reset', method='post')
+			if user.role == 'admin'
+				input(placeholder='Gebruikersnaam', type='text', name='username')
+			if user.role == 'service'
+				p= user.username
+			br
+			br
+			input(placeholder='Nieuw wachtwoord', type='password' name='password')
+			br
+			br
+			input(placeholder='Wachtwoord controle', type='password' name='password_check')
+			br
+			br
+			button.btn.btn-lg.btn-success(type='submit') Registreer

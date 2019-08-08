@@ -1,0 +1,45 @@
+extends ../dashboard.pug
+
+block sidemenu
+		ul.nav.nav-pills.flex-column
+						li.nav-item
+							a.nav-link.active(href='#')
+								| Overview 
+								span.sr-only (current)
+						li.nav-item
+							a.nav-link(href='#') Reports
+						li.nav-item
+							a.nav-link(href='#') Analytics
+						li.nav-item
+							a.nav-link(href='#') Export
+					ul.nav.nav-pills.flex-column
+						li.nav-item
+							a.nav-link(href='#') Nav item
+						li.nav-item
+							a.nav-link(href='#') Nav item again
+						li.nav-item
+							a.nav-link(href='#') One more nav
+						li.nav-item
+							a.nav-link(href='#') Another nav item
+					ul.nav.nav-pills.flex-column
+						li.nav-item
+							a.nav-link(href='#') Nav item again
+						li.nav-item
+							a.nav-link(href='#') One more nav
+						li.nav-item
+							a.nav-link(href='#') Another nav item
+
+block content
+	h1 controleer de gegevens:
+	p naam:
+	p= details.consumerName
+	p bankrekeningnummer:
+	p= details.consumerAccount
+	form(action='/refund_send', method='post')
+		p payment ID:
+		input(value=paymentId, type='text', name='paymentId')
+		br
+		p bedrag:
+		input(value= paymentAmount, type='text' name='paymentAmount')
+		br
+		button(type='submit') verstuur

@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+	head
+		title natural heroes Dashboard
+		// Bootstrap core CSS
+		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+		link(href='css/jumbotron.css', rel='stylesheet')
+	body
+		.container
+			.header.clearfix
+				h3.text-muted Natural Heroes
+			.jumbotron
+				h1.display-3 Login
+				form(action='users/login', method='post')
+					input(placeholder='gebruikersnaam', type='text', name='username')
+					br
+					br
+					input(placeholder='wachtwoord', type='password' name='password')
+					br
+					br
+					button.btn.btn-lg.btn-success(type='submit') Log in
+
+					
+			footer.footer
+				p © Natural Heroes 2017
+				p Built by Lindsey Schaap
+		// /container
+		//
+			Bootstrap core JavaScript
+			==================================================
+		// Placed at the end of the document so the pages load faster
+		// IE10 viewport hack for Surface/desktop Windows 8 bug
+		script(src='../../../../assets/js/ie10-viewport-bug-workaround.js')

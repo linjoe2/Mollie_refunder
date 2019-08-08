@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title Natural heroes Dashboard
+		link(href="http://getbootstrap.com/dist/css/bootstrap.min.css", rel="stylesheet")
+		link(href='/css/dashboard.css', rel='stylesheet')
+	body
+		nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+			a.navbar-brand(href='/dashboard') Natural Heroes
+			button.navbar-toggler.d-lg-none(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarsExampleDefault.collapse.navbar-collapse
+				block menu
+					ul.navbar-nav.mr-auto
+						li.nav-item.active
+							a.nav-link(href='/dashboard') Dashboard
+						//- if user.role == 'admin'
+							li.nav-item
+								a.nav-link(href='/instellingen') Instellingen
+						li.nav-item
+							a.nav-link(href='/users') Profiel
+						li.nav-item
+							a.nav-link(href='/users/logout') Uitloggen
+
+		.container-fluid
+			.row
+				nav.col-sm-3.col-md-2.d-none.d-sm-block.bg-light.sidebar
+					block sidemenu
+
+				main.col-sm-9.ml-sm-auto.col-md-10.pt-3(role='main')
+					block content
+		//
+			Bootstrap core JavaScript
+			==================================================
+		// Placed at the end of the document so the pages load faster
+		script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+		script.
+			window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.min.js"><\\/script>')
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")

@@ -1,0 +1,30 @@
+extends ../dashboard.pug
+
+block menu
+	ul.navbar-nav.mr-auto
+		li.nav-item
+			a.nav-link(href='/dashboard') Dashboard 
+		li.nav-item.active
+			a.nav-link(href='/instellingen') instellingen
+		li.nav-item
+			a.nav-link(href='/users') Profiel
+		li.nav-item
+			a.nav-link(href='/users/logout') Uitloggen
+
+
+block sidemenu
+	ul.nav.nav-pills.flex-column
+					li.nav-item
+						a.nav-link.active(href='/instellingen')
+							| API
+
+block content
+	h1 API instellingen
+	if msg
+		div.alert.alert-success
+				p= msg
+	form(action='/instellingen/api', method='post')
+			h5 Mollie api key:
+			input(placeholder= molliekey, type='text', name='mollie')
+			br
+			button.btn.btn-lg.btn-success(type='submit') opslaan
